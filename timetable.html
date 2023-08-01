@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+
+    <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+    <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            font-family: monospace;
+        }
+
+        tbody th, td {
+            text-align: center;
+            max-width: 160px;
+            max-height: 160px;
+            width: 160px;
+            height: 160px;
+            border: none;
+            /* border-radius: 10px; */
+        }
+
+        thead th {
+            height: 50px;
+            letter-spacing: 3px;
+            font-weight: lighter;
+        }
+
+        .day {
+            width: 50px;
+            font-weight: lighter;
+            text-transform: uppercase;
+            font-size: larger;
+        }
+
+        .lunch {
+            width: 75px;
+            font-size: larger;
+        }
+
+        .code {
+            letter-spacing: 2px;
+            font-size: small;
+        }
+
+        .name {
+            font-weight: bold;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .emoji {
+            font-size: 50px;
+        }
+
+        /* math */
+
+        .PST {
+            background-color: rgb(179, 215, 179);
+        }
+
+        .GT {
+            background-color: rgb(184, 184, 224);
+        }
+
+        .ODE {
+            background-color: #e79da3;
+        }
+
+        .RM {
+            background-color: rgb(137, 205, 209);
+        }
+
+        .RA {
+            background-color: rgb(220, 172, 138);
+        }
+
+        .FG {
+            background-color: rgb(148, 174, 224);
+        }
+
+        /* physics */
+        .QM {
+            background-color: rgb(214, 151, 201);
+        }
+        
+        /* audited */
+        .ED {
+            background-color: rgb(235, 200, 143);
+        }
+
+        .E {
+            background-color: rgb(168, 168, 168);
+        }
+
+        .NA {
+            background-color: rgb(232, 150, 187);
+        }
+    </style>
+</head>
+<body>
+    <table class="table" cellspacing="0">
+        <thead>
+            <tr>
+                <th class="day"></th>
+                <th scope="col">9:00</th>
+                <th scope="col">10:00</th>
+                <th scope="col">11:00</th>
+                <th scope="col">12:00</th>
+                <th scope="col">13:00</th>
+                <th scope="col">14:00</th>
+                <th scope="col">15:00</th>
+                <th scope="col">16:00</th>
+                <th scope="col">17:00</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" class="day">
+                    <div>
+                        <div>M</div>
+                        <div>O</div>
+                        <div>N</div>
+                    </div>
+                </th>
+                <td class="QM" rowspan="2"></td>
+                <td class="ED"></td>
+                <td class="ODE" rowspan="2"></td>
+                <td class="E" rowspan="3"></td>
+                <td class="lunch" rowspan="5">
+                    <div>
+                        <div>L</div>
+                        <div>U</div>
+                        <div>N</div>
+                        <div>C</div>
+                        <div>H</div>
+                    </div>
+                </td>
+                <td class="RM"></td>
+                <td class="FG" rowspan="2"></td>
+                <td></td>
+                <td class="RA"></td>
+            </tr>
+            <tr>
+                <th scope="row" class="day">
+                    <div>
+                        <div>T</div>
+                        <div>U</div>
+                        <div>E</div>
+                    </div>
+                </th>
+                <!-- <td class="QM"></td> -->
+                <td class="PST" rowspan="2"></td>
+                <!-- <td class="ODE"></td> -->
+                <!-- <td class="E"></td> -->
+                <td class="RA"></td>
+                <!-- <td class="FG"></td> -->
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row" class="day">
+                    <div>
+                        <div>W</div>
+                        <div>E</div>
+                        <div>D</div>
+                    </div>
+                </th>
+                <td class="ED"></td>
+                <!-- <td class="PST"></td> -->
+                <td class="GT" rowspan="2"></td>
+                <!-- <td class="E"></td> -->
+                <td class="NA"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row" class="day">
+                    <div>
+                        <div>T</div>
+                        <div>H</div>
+                        <div>U</div>
+                    </div>
+                </th>
+                <td class="QM"></td>
+                <td class="ODE"></td>
+                <!-- <td class="GT"></td> -->
+                <td class="NA" rowspan="2"></td>
+                <td class="RM" rowspan="2"></td>
+                <td class="FG"></td>
+                <td></td>
+                <td class="RA"></td>
+            </tr>
+            <tr>
+                <th scope="row" class="day">
+                    <div>
+                        <div>F</div>
+                        <div>R</div>
+                        <div>I</div>
+                    </div>
+                </th>
+                <td class="GT"></td>
+                <td class="ED"></td>
+                <td class="PST"></td>
+                <!-- <td class="NA"></td> -->
+                <!-- <td class="RM"></td> -->
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        classes = {
+            'QM': {
+                'code': 'PH3124',
+                'name': 'Quantum Mechanics',
+                'room': 'LHC 301',
+                'emoji': '🧟'
+            },
+            'ODE': {
+                'code': 'MT3144',
+                'name': 'Ordinary Differential Equations',
+                'room': 'LHC 206',
+                'emoji': '🍼'
+            },
+            'RM': {
+                'code': 'MT3114',
+                'name': 'Rings and Modules',
+                'room': 'LHC 206',
+                'emoji': '💍'
+            },
+            'FG': {
+                'code': 'MT3174',
+                'name': 'Fields and Galois Theory',
+                'room': 'LHC 206',
+                'emoji': '🦄'
+            },
+            'RA': {
+                'code': 'MT3124',
+                'name': 'Real Analysis',
+                'room': 'LHC 206',
+                'emoji': '👻'
+            },
+            'PST': {
+                'code': 'MT3134',
+                'name': 'Point Set Topology',
+                'room': 'LHC 206',
+                'emoji': '🍩'
+            },
+            'GT': {
+                'code': 'MT3154',
+                'name': 'Graph Theory',
+                'room': 'LHC 206',
+                'emoji': '🕸️'
+            },
+            'NA': {
+                'code': 'MT3164',
+                'name': 'Numerical Analysis',
+                'room': 'LHC 206',
+                'emoji': '🍷'
+            },
+            'E': {
+                'code': 'PH3144',
+                'name': 'Electronics',
+                'room': 'LHC 205',
+                'emoji': '🤖'
+            },
+            'ED': {
+                'code': 'PH3114',
+                'name': 'Electrodynamics',
+                'room': 'LHC 205',
+                'emoji': '💡'
+            },
+        };
+
+        for (i in classes) {
+            $(`.${i}`).append(`
+            <div>
+                <div class="code">${classes[i]['code']}</div>
+                <div class="emoji">${classes[i]['emoji']}</div>
+                <div class="name">${classes[i]['name']}</div>
+                <div class="room">${classes[i]['room']}</div>
+            </div>`)
+        }
+    </script>
+</body>
+</html>
