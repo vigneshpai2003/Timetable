@@ -102,6 +102,25 @@
         .NA {
             background-color: rgb(232, 150, 187);
         }
+
+        .QR {
+            position: absolute;
+            top: 0;
+        }
+
+        .QR-image {
+            width: 100vw;
+            height: 100vh;
+            background-color: #00000099;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .QR-image img {
+            width: 400px;
+            height: 400px;
+        }
     </style>
 </head>
 <body>
@@ -217,6 +236,9 @@
             </tr>
         </tbody>
     </table>
+    <div class="QR">
+
+    </div>
     <script>
         classes = {
             'QM': {
@@ -281,6 +303,16 @@
             },
         };
 
+        function generate_QR_handler(i) {
+            return function(event) { 
+                $(`.QR`).append(`
+                <div class="QR-image">
+                    <img src="./QR/${i}.png" alt="No QR loaded."></img>
+                </div>
+                `)
+            };
+        }
+
         for (i in classes) {
             $(`.${i}`).append(`
             <div>
@@ -289,7 +321,14 @@
                 <div class="name">${classes[i]['name']}</div>
                 <div class="room">${classes[i]['room']}</div>
             </div>`)
+
+            $(`.${i}`).on('click', generate_QR_handler(i))
         }
+
+        $(`.QR`).on('click', function () {
+            $('.QR-image').remove()
+        })
+
     </script>
 </body>
 </html>
