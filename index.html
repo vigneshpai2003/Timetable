@@ -59,35 +59,8 @@
             font-size: 50px;
         }
 
-        /* math */
-
-        .PST {
-            background-color: rgb(179, 215, 179);
-        }
-
-        .GT {
-            background-color: rgb(184, 184, 224);
-        }
-
-        .ODE {
-            background-color: #e79da3;
-        }
-
-        .RM {
-            background-color: rgb(137, 205, 209);
-        }
-
-        .RA {
-            background-color: rgb(220, 172, 138);
-        }
-
-        /* physics */
-        .QM {
-            background-color: rgb(214, 151, 201);
-        }
-
         .QR {
-            position: absolute;
+            position: fixed;
             top: 0;
         }
 
@@ -131,9 +104,9 @@
                         <div>N</div>
                     </div>
                 </th>
-                <td class="QM" rowspan="2"></td>
+                <td class="FA" rowspan="2"></td>
                 <td></td>
-                <td class="ODE" rowspan="2"></td>
+                <td></td>
                 <td></td>
                 <td class="lunch" rowspan="5">
                     <div>
@@ -144,10 +117,10 @@
                         <div>H</div>
                     </div>
                 </td>
-                <td class="RM"></td>
                 <td></td>
                 <td></td>
-                <td class="RA"></td>
+                <td class="PR" rowspan="2"></td>
+                <td></td>
             </tr>
             <tr>
                 <th scope="row" class="day">
@@ -157,13 +130,12 @@
                         <div>E</div>
                     </div>
                 </th>
-                <!-- <td class="QM"></td> -->
-                <td class="PST" rowspan="2"></td>
-                <!-- <td class="ODE"></td> -->
-                <td></td>
-                <td class="RA"></td>
                 <td></td>
                 <td></td>
+                <td></td>
+
+                <td></td>
+                <td class="QFT"></td>
                 <td></td>
             </tr>
             <tr>
@@ -175,10 +147,11 @@
                     </div>
                 </th>
                 <td></td>
-                <!-- <td class="PST"></td> -->
-                <td class="GT" rowspan="2"></td>
+                <td class="SM"></td>
+                <td class="AT" rowspan="2"></td>
                 <td></td>
-                <td></td>
+
+                <td class="DG"></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -191,14 +164,14 @@
                         <div>U</div>
                     </div>
                 </th>
-                <td class="QM"></td>
-                <td class="ODE"></td>
-                <!-- <td class="GT"></td> -->
+                <td class="FA"></td>
                 <td></td>
-                <td class="RM" rowspan="2"></td>
+                <td class="DG" rowspan="2"></td>
+
+                <td class="GR" rowspan="2"></td>
+                <td class="QFT"></td>
+                <td class="PR"></td>
                 <td></td>
-                <td></td>
-                <td class="RA"></td>
             </tr>
             <tr>
                 <th scope="row" class="day">
@@ -208,11 +181,10 @@
                         <div>I</div>
                     </div>
                 </th>
-                <td class="GT"></td>
+                <td class="AT"></td>
                 <td></td>
-                <td class="PST"></td>
-                <td></td>
-                <!-- <td class="RM"></td> -->
+                <td class="SM"></td>
+
                 <td></td>
                 <td></td>
                 <td></td>
@@ -222,41 +194,54 @@
     <div class="QR"></div>
     <script>
         classes = {
-            'QM': {
-                'code': 'PH3124',
-                'name': 'Quantum Mechanics',
-                'room': 'LHC 301',
-                'emoji': '🧟'
+            'FA': {
+                'code': 'MT4124',
+                'name': 'Functional Analysis',
+                'room': 'LHC 205',
+                'emoji': '🐻‍❄️',
+                'color': 'rgb(204, 204, 204)',
             },
-            'ODE': {
-                'code': 'MT3144',
-                'name': 'Ordinary Differential Equations',
-                'room': 'LHC 206',
-                'emoji': '🍼'
+            'PR': {
+                'code': 'MT4134',
+                'name': 'Probability',
+                'room': 'LHC 306',
+                'emoji': '🎲',
+                'color': 'rgb(188 221 186)',
             },
-            'RM': {
-                'code': 'MT3114',
-                'name': 'Rings and Modules',
-                'room': 'LHC 206',
-                'emoji': '💍'
+            'AT': {
+                'code': 'MT4114',
+                'name': 'Algebraic Topology',
+                'room': 'LHC 205',
+                'emoji': '🍩',
+                'color': 'rgb(208 184 167)',
             },
-            'RA': {
-                'code': 'MT3124',
-                'name': 'Real Analysis',
-                'room': 'LHC 206',
-                'emoji': '👻'
+            'DG': {
+                'code': 'MT3184',
+                'name': 'Differential Geometry and Lie Groups',
+                'room': 'LHC 205',
+                'emoji': '🍇',
+                'color': 'rgb(209 182 214)',
             },
-            'PST': {
-                'code': 'MT3134',
-                'name': 'Point Set Topology',
-                'room': 'LHC 206',
-                'emoji': '🍩'
+            'QFT': {
+                'code': 'PH4133',
+                'name': 'Quantum Field Theory',
+                'room': 'LHC 203',
+                'emoji': '🍄',
+                'color': 'rgb(152 203 218)',
             },
-            'GT': {
-                'code': 'MT3154',
-                'name': 'Graph Theory',
+            'GR': {
+                'code': 'PH4183',
+                'name': 'Gravitation',
+                'room': 'LHC 304',
+                'emoji': '🪐',
+                'color': 'rgb(151 191 186)',
+            },
+            'SM': {
+                'code': 'PH4123',
+                'name': 'Statistical Mechanics II',
                 'room': 'LHC 206',
-                'emoji': '🕸️'
+                'emoji': '🐙',
+                'color': 'rgb(255 217 217)',
             }
         };
 
@@ -278,6 +263,7 @@
                 <div class="name">${classes[i]['name']}</div>
                 <div class="room">${classes[i]['room']}</div>
             </div>`)
+            $(`.${i}`).css('background-color', classes[i]['color'])
 
             $(`.${i}`).on('click', generate_QR_handler(i))
         }
